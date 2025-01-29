@@ -92,7 +92,6 @@ class edulegit_config {
      * Retrieves the Moodle release version.
      *
      * @return string|null The Moodle version or release, or null if not found.
-     * @global object $CFG The global Moodle configuration object.
      */
     public function get_release() {
         global $CFG;

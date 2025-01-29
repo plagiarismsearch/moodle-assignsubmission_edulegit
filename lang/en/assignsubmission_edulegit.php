@@ -23,6 +23,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// phpcs:disable moodle.Files.LangFilesOrdering.IncorrectOrder
+
 $string['edulegit'] = 'EduLegit workspace';
 $string['pluginname'] = 'EduLegit workspace';
 $string['pluginabout'] =
@@ -76,3 +78,5 @@ $string['privacy:metadata:tablepurpose'] = 'Stores submission for each attempt.'
 $string['privacy:metadata:submissionpurpose'] = 'The submission ID that links to submissions for the user.';
 $string['privacy:metadata:textpurpose'] = 'The actual Edulegit Html content submitted for this attempt of the assignment.';
 $string['privacy:path'] = 'Edulegit content';
+
+// phpcs:enable moodle.Files.LangFilesOrdering.IncorrectOrder

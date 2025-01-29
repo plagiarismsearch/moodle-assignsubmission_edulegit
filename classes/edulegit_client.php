@@ -75,78 +75,35 @@ class edulegit_client {
     public function fetch(string $method, string $uri, array $data = []): edulegit_client_response {
         $url = $this->baseurl . $uri;
 
-        $curl = curl_init($this->filter_url($url));
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
-
-        $postfields = $this->build_post_fields($data);
-        if ($postfields) {
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
-        }
         $headers = [
                 'X-API-TOKEN' => $this->authkey,
                 'Content-Type' => 'application/json',
                 'User-Agent' => 'Mozilla/5.0 Edulegit plugin/1.0',
         ];
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->build_headers($headers));
 
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_FAILONERROR, false);
-        curl_setopt($curl, CURLOPT_ENCODING, '');
-        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 7);
+        $options = [
+                'CURLOPT_TIMEOUT' => 10,
+                'CURLOPT_CONNECTTIMEOUT' => 7,
+        ];
 
         if ($this->debug) {
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+            $options = array_merge($options, [
+                    'CURLOPT_SSL_VERIFYPEER' => false,
+                    'CURLOPT_SSL_VERIFYHOST' => false,
+            ]);
         }
 
-        $body = curl_exec($curl);
-        $info = curl_getinfo($curl);
-        $error = curl_error($curl);
+        $curl = new \curl();
+        $curl->setHeader($headers);
 
-        curl_close($curl);
-
-        return new edulegit_client_response((string) $body, (array) $info, (string) $error, $url);
-    }
-
-    /**
-     * Filters and encodes a URL.
-     *
-     * @param string $url The URL to be filtered.
-     * @return string The filtered URL.
-     */
-    private function filter_url(string $url) {
-        return str_replace(
-                ['%3A', '%2F', '%3F', '%3D', '%26', '%40', '%25', '%23'],
-                [':', '/', '?', '=', '&', '@', '%', '#'],
-                rawurlencode($url)
-        );
-    }
-
-    /**
-     * Builds the post fields for the cURL request.
-     *
-     * @param array $data The data to be encoded and sent.
-     * @return string The JSON-encoded data.
-     */
-    private function build_post_fields(array $data) {
-        return edulegit_helper::json_encode($data);
-    }
-
-    /**
-     * Constructs the HTTP headers for the request.
-     *
-     * @param array $headers The array of headers (key-value pairs).
-     * @return array The formatted headers.
-     */
-    protected function build_headers(array $headers) {
-        $result = [];
-        foreach ($headers as $key => $value) {
-            $result[] = $key . ': ' . $value;
+        if ($method === 'POST') {
+            $jsondata = edulegit_helper::json_encode($data);
+            $body = $curl->post($url, $jsondata, $options);
+        } else {
+            $body = $curl->get($url, $data, $options);
         }
-        return $result;
+
+        return new edulegit_client_response((string) $body, (array) $curl->get_info(), (string) $curl->error, $url);
     }
 
     /**

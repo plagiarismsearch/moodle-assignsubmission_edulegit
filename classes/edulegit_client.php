@@ -76,9 +76,9 @@ class edulegit_client {
         $url = $this->baseurl . $uri;
 
         $headers = [
-                'X-API-TOKEN' => $this->authkey,
-                'Content-Type' => 'application/json',
-                'User-Agent' => 'Mozilla/5.0 Edulegit plugin/1.0',
+                'X-API-TOKEN: ' . $this->authkey,
+                'Content-Type: ' . 'application/json',
+                'User-Agent: Mozilla/5.0 Edulegit plugin/1.0',
         ];
 
         $options = [

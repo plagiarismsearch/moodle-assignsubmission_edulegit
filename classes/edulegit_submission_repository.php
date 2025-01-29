@@ -39,7 +39,7 @@ class edulegit_submission_repository {
     private $db;
 
     /**
-     * Constructor for dulegit_submission_repository.
+     * Constructor for edulegit_submission_repository.
      */
     public function __construct() {
         global $DB;
@@ -124,7 +124,7 @@ class edulegit_submission_repository {
                 c.startdate AS course_startdate, c.enddate AS course_enddate
                 FROM {assign} a
                 JOIN {course} c ON c.id = a.course
-                WHERE c.id = :id";
+                WHERE a.id = :id";
 
         return $this->db->get_record_sql($sql, $params);
     }

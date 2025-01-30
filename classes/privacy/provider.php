@@ -55,11 +55,33 @@ class provider implements
      */
     public static function get_metadata(collection $collection): collection {
         $detail = [
-                'assignment' => 'privacy:metadata:assignmentpurpose',
-                'submission' => 'privacy:metadata:submissionpurpose',
-                'content' => 'privacy:metadata:textpurpose',
+                'assignment' => 'privacy:metadata:assignsubmission:assignment',
+                'submission' => 'privacy:metadata:assignsubmission:submission',
+                'title' => 'privacy:metadata:assignsubmission:title',
+                'content' => 'privacy:metadata:assignsubmission:content',
+                'documentid' => 'privacy:metadata:assignsubmission:documentid',
+                'taskid' => 'privacy:metadata:assignsubmission:taskid',
+                'taskuserid' => 'privacy:metadata:assignsubmission:taskuserid',
+                'userid' => 'privacy:metadata:assignsubmission:userid',
+                'userkey' => 'privacy:metadata:assignsubmission:userkey',
+                'baseurl' => 'privacy:metadata:assignsubmission:baseurl',
+                'url' => 'privacy:metadata:assignsubmission:url',
+                'authkey' => 'privacy:metadata:assignsubmission:authkey',
+                'score' => 'privacy:metadata:assignsubmission:score',
+                'plagiarism' => 'privacy:metadata:assignsubmission:plagiarism',
+                'airate' => 'privacy:metadata:assignsubmission:airate',
+                'aiprobability' => 'privacy:metadata:assignsubmission:aiprobability',
+
         ];
-        $collection->add_database_table('assignsubmission_edulegit', $detail, 'privacy:metadata:tablepurpose');
+        $collection->add_database_table('assignsubmission_edulegit', $detail, 'privacy:metadata:assignsubmission');
+
+        $collection->add_external_location_link('edulegit_workspace', [
+                'userid' => 'privacy:metadata:edulegit_workspace:userid',
+                'useremail' => 'privacy:metadata:edulegit_workspace:useremail',
+                'userfirstname' => 'privacy:metadata:edulegit_workspace:userfirstname',
+                'userlastname' => 'privacy:metadata:edulegit_workspace:userlastname',
+        ], 'privacy:metadata:edulegit_workspace');
+
         return $collection;
     }
 
@@ -112,7 +134,7 @@ class provider implements
         if (!empty($editortext)) {
             $submissiontext = new \stdClass();
             $currentpath = $exportdata->get_subcontext();
-            $currentpath[] = get_string('privacy:path', 'assignsubmission_edulegit');
+            $currentpath[] = get_string('privacy:metadata:assignsubmission', 'assignsubmission_edulegit');
             $submissiontext->text = $editortext;
             writer::with_context($context)
                     // Add the text to the exporter.

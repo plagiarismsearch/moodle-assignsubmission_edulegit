@@ -73,10 +73,36 @@ $string['default_open_edulegit_error'] = 'An error occurred while fetching data 
 
 $string['eventassessableuploaded'] = 'EduLegit submission content uploaded.';
 
-$string['privacy:metadata:assignmentpurpose'] = 'Assignment ID';
-$string['privacy:metadata:tablepurpose'] = 'Stores submission for each attempt.';
-$string['privacy:metadata:submissionpurpose'] = 'The submission ID that links to submissions for the user.';
-$string['privacy:metadata:textpurpose'] = 'The actual Edulegit Html content submitted for this attempt of the assignment.';
-$string['privacy:path'] = 'Edulegit content';
+$string['privacy:metadata:assignsubmission'] = 'Stores submission-related data for assignments in EduLegit Workspace.';
+
+$string['privacy:metadata:assignsubmission:assignment'] = 'The unique identifier of the assignment associated with the submission.';
+$string['privacy:metadata:assignsubmission:submission'] = 'The unique identifier of the user’s submission.';
+$string['privacy:metadata:assignsubmission:title'] = 'The title of the EduLegit submission.';
+$string['privacy:metadata:assignsubmission:content'] = 'The content of the EduLegit submission.';
+$string['privacy:metadata:assignsubmission:documentid'] = 'The unique identifier of the document submitted to EduLegit.';
+$string['privacy:metadata:assignsubmission:taskid'] = 'The unique identifier of the task related to the EduLegit submission.';
+$string['privacy:metadata:assignsubmission:taskuserid'] =
+        'The unique identifier of the user associated with the EduLegit submission task.';
+$string['privacy:metadata:assignsubmission:userid'] = 'The unique identifier of the user who submitted to EduLegit.';
+$string['privacy:metadata:assignsubmission:userkey'] = 'A unique key identifying the user in EduLegit.';
+$string['privacy:metadata:assignsubmission:baseurl'] = 'The base URL for accessing the EduLegit submission.';
+$string['privacy:metadata:assignsubmission:url'] = 'The shareable URL of the EduLegit submission document.';
+$string['privacy:metadata:assignsubmission:authkey'] = 'An authentication key for secure access to the EduLegit submission.';
+$string['privacy:metadata:assignsubmission:score'] = 'The EduLegit score assigned to the submission.';
+$string['privacy:metadata:assignsubmission:plagiarism'] = 'The plagiarism score determined for the submission.';
+$string['privacy:metadata:assignsubmission:airate'] = 'The AI-generated rating assigned to the submission.';
+$string['privacy:metadata:assignsubmission:aiprobability'] =
+        'The probability score indicating whether the submission was AI-generated.';
+
+$string['privacy:metadata:edulegit_workspace'] =
+        'EduLegit Workspace requires user data to generate and display the EduLegit submission.';
+$string['privacy:metadata:edulegit_workspace:userid'] =
+        'The userid is sent to EduLegit Workspace to allow you to access your data on EduLegit Workspace.';
+$string['privacy:metadata:edulegit_workspace:useremail'] =
+        'The user email is sent to EduLegit Workspace to identify users and facilitate authentication.';
+$string['privacy:metadata:edulegit_workspace:userfirstname'] =
+        'The user\'s first name is sent to the EduLegit Workspace to ensure full identification for the user\'s teacher.';
+$string['privacy:metadata:edulegit_workspace:userlastname'] =
+        'The user\'s last name is sent to the EduLegit Workspace to ensure full identification for the user\'s teacher.';
 
 // phpcs:enable moodle.Files.LangFilesOrdering.IncorrectOrder

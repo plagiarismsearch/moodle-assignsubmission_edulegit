@@ -77,7 +77,7 @@ class edulegit_client {
 
         $headers = [
                 'X-API-TOKEN: ' . $this->authkey,
-                'Content-Type: ' . 'application/json',
+                'Content-Type: application/json',
                 'User-Agent: Mozilla/5.0 Edulegit plugin/1.0',
         ];
 

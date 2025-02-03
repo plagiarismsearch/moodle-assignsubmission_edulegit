@@ -56,13 +56,14 @@ class assign_submission_edulegit extends assign_submission_plugin {
      */
     public function get_settings(MoodleQuickForm $mform) {
 
-        $config = $this->get_edulegit()->get_config();
+        $assignmenthasintance = $this->assignment->has_instance();
+        $config = $assignmenthasintance ? $this->get_edulegit()->get_config() : null;
 
         $name = $this->translate('enable_attention_label');
         $mform->addElement('advcheckbox', 'assignsubmission_edulegit_enable_attention',
                 $name, $this->translate('enable_attention'), null, [0, 1]);
 
-        if ($this->assignment->has_instance()) {
+        if ($config) {
             $mform->setDefault('assignsubmission_edulegit_enable_attention',
                     $config->get_plugin_or_global_config('enable_attention'));
         }
@@ -74,7 +75,7 @@ class assign_submission_edulegit extends assign_submission_plugin {
         $name = $this->translate('enable_camera_label');
         $mform->addElement('advcheckbox', 'assignsubmission_edulegit_enable_camera',
                 $name, $this->translate('enable_camera'), null, [0, 1]);
-        if ($this->assignment->has_instance()) {
+        if ($config) {
             $mform->setDefault('assignsubmission_edulegit_enable_camera',
                     $config->get_plugin_or_global_config('enable_camera'));
         }
@@ -86,7 +87,7 @@ class assign_submission_edulegit extends assign_submission_plugin {
         $name = $this->translate('enable_screen_label');
         $mform->addElement('advcheckbox', 'assignsubmission_edulegit_enable_screen',
                 $name, $this->translate('enable_screen'), null, [0, 1]);
-        if ($this->assignment->has_instance()) {
+        if ($config) {
             $mform->setDefault('assignsubmission_edulegit_enable_screen',
                     $config->get_plugin_or_global_config('enable_screen'));
         }
@@ -98,7 +99,7 @@ class assign_submission_edulegit extends assign_submission_plugin {
         $name = $this->translate('enable_plagiarism_label');
         $mform->addElement('advcheckbox', 'assignsubmission_edulegit_enable_plagiarism',
                 $name, $this->translate('enable_plagiarism'), null, [0, 1]);
-        if ($this->assignment->has_instance()) {
+        if ($config) {
             $mform->setDefault('assignsubmission_edulegit_enable_plagiarism',
                     $config->get_plugin_or_global_config('enable_plagiarism'));
         }
@@ -110,7 +111,7 @@ class assign_submission_edulegit extends assign_submission_plugin {
         $name = $this->translate('enable_ai_label');
         $mform->addElement('advcheckbox', 'assignsubmission_edulegit_enable_ai',
                 $name, $this->translate('enable_ai'), null, [0, 1]);
-        if ($this->assignment->has_instance()) {
+        if ($config) {
             $mform->setDefault('assignsubmission_edulegit_enable_ai',
                     $config->get_plugin_or_global_config('enable_ai'));
         }

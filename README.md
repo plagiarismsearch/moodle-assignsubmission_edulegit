@@ -39,3 +39,14 @@ learning process. The supervision is handled with the most advanced tools, inclu
    **Site administration > Plugins > Submission plugins > EduLegit workspace**.
 
 
+### Data Deletion Request Process for EduLegit
+
+If users need to request the deletion of their data from EduLegit, they can follow these steps:
+
+1. **Visit the EduLegit Website** [https://edulegit.com/](https://edulegit.com/).
+2. **Log In**: Use your credentials to log in to your EduLegit account.
+3. Navigate to the **Account** page in your profile.
+4. Click the **Delete** button.
+5. Read the instructions and confirm deletion.
+
+Additionally, **Administrators** can delete user information manually via the **EduLegit Administration Page**.

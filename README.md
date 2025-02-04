@@ -4,7 +4,7 @@ EduLegit workspace is a Moodle assignment submission plugin
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/plagiarismsearch/assignsubmission_edulegit/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/plagiarismsearch/assignsubmission_edulegit/?branch=master)
 
-**Supported Moodle versions:** 4.2 - 4.4  
+**Supported Moodle versions:** 4.2 - 4.5  
 **Supported PHP versions:** 8.1 - 8.3  
 **Moodle plugins directory:** https://moodle.org/plugins/assignsubmission_edulegit
 

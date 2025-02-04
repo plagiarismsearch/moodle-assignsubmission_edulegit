@@ -144,6 +144,11 @@ class edulegit_submission_manager {
         return $this->sync_submission_edulegit_response($submission, $responseobject);
     }
 
+    /**
+     * Builds the callback URL for the webhook handler.
+     *
+     * @return \moodle_url The constructed callback URL.
+     */
     private function build_callback_url(): \moodle_url {
         return new \moodle_url('/webservice/rest/server.php', [
                 'wstoken' => $this->parse_plugin_wstoken(),
@@ -152,6 +157,11 @@ class edulegit_submission_manager {
         ]);
     }
 
+    /**
+     * Retrieves the web service token for the plugin.
+     *
+     * @return string The web service token or an empty string if not set.
+     */
     private function parse_plugin_wstoken(): string {
         return $this->config->get_plugin_or_global_config('ws_token') ??
                 ($this->config->get_plugin_or_global_config('wstoken') ?? '');

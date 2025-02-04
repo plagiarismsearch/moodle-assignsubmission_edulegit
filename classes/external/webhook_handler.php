@@ -30,6 +30,14 @@ use core_external\external_function_parameters;
 use core_external\external_value;
 use core_external\external_single_structure;
 
+/**
+ * Webhook handler for the EduLegit assignment submission plugin.
+ *
+ * @package   assignsubmission_edulegit
+ * @author    Alex Crosby <developer@edulegit.com>
+ * @copyright @2025 EduLegit.com
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class webhook_handler extends external_api {
     /**
      * Define the parameters for the webhook handler.

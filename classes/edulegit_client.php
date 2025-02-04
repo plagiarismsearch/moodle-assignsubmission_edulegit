@@ -115,4 +115,14 @@ class edulegit_client {
     public function init_assignment($data): edulegit_client_response {
         return $this->fetch('POST', '/init-moodle-assignment', $data);
     }
+
+    /**
+     * Delete a Moodle assignments via the API.
+     *
+     * @param array $usertaskids Array of assigment ids.
+     * @return edulegit_client_response The API response.
+     */
+    public function delete_assigment_user_tasks($usertaskids): edulegit_client_response {
+        return $this->fetch('POST', '/delete-moodle-assignments', $usertaskids);
+    }
 }

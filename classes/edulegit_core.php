@@ -64,7 +64,7 @@ class edulegit_core {
     public function __construct(\stdClass $config) {
         $this->config = new \assignsubmission_edulegit\edulegit_config($config);
         $this->repository = new \assignsubmission_edulegit\edulegit_submission_repository();
-        $client = new edulegit_client($this->config->get_global('api_token'));
+        $client = new edulegit_client($this->config->get_global('api_token') ?? '');
         $this->manager = new \assignsubmission_edulegit\edulegit_submission_manager($this->config, $client, $this->repository);
     }
 

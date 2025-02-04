@@ -265,7 +265,7 @@ class assign_submission_edulegit extends assign_submission_plugin {
      * @return boolean
      */
     public function remove(stdClass $submission): bool {
-        return $this->get_edulegit()->get_repository()->delete_submission($submission ? $submission->id : 0);
+        return $this->get_edulegit()->get_manager()->delete_submission($submission ? $submission->id : 0);
     }
 
     /**
@@ -317,7 +317,7 @@ class assign_submission_edulegit extends assign_submission_plugin {
      */
     public function delete_instance(): bool {
         $assignmentid = $this->assignment->get_instance()->id;
-        return $this->get_edulegit()->get_repository()->delete_assignment($assignmentid);
+        return $this->get_edulegit()->get_manager()->delete_assignment($assignmentid);
     }
 
     /**

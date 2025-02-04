@@ -69,6 +69,42 @@ class edulegit_submission_repository {
     }
 
     /**
+     * Retrieves the task user IDs associated with a specific submission.
+     *
+     * @param int $submissionid The ID of the submission.
+     * @return int[] An array of unique task user IDs associated with the submission.
+     */
+    public function get_submission_task_user_ids(int $submissionid): array {
+        return $this->get_task_user_ids(['submission' => $submissionid]);
+    }
+
+    /**
+     * Retrieves the task user IDs associated with a specific assignment.
+     *
+     * @param int $assignmentid The ID of the assignment.
+     * @return int[] An array of unique task user IDs associated with the assignment.
+     */
+    public function get_assignment_task_user_ids(int $assignmentid): array {
+        return $this->get_task_user_ids(['assignment' => $assignmentid]);
+    }
+
+    /**
+     * Retrieves task user IDs based on specified conditions.
+     *
+     * @param array $conditions An associative array of conditions for filtering records.
+     * @return int[] An array of unique task user IDs matching the conditions.
+     */
+    private function get_task_user_ids(array $conditions): array {
+        $result = [];
+        $submissions = $this->db->get_records(self::EDULEGIT_SUBMISSION_TABLE_NAME, $conditions, '', 'taskuserid');
+
+        foreach ($submissions as $submission) {
+            $result[] = $submission->taskuserid;
+        }
+        return array_unique($result);
+    }
+
+    /**
      * Deletes a submission by its submission id.
      *
      * @param int $submissionid The submission id.

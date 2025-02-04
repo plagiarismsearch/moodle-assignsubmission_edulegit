@@ -79,7 +79,7 @@ $string['privacy:metadata:assignsubmission:assignment'] = 'The unique identifier
 $string['privacy:metadata:assignsubmission:submission'] = 'The unique identifier of the user’s submission.';
 $string['privacy:metadata:assignsubmission:title'] = 'The title of the EduLegit submission.';
 $string['privacy:metadata:assignsubmission:content'] = 'The content of the EduLegit submission.';
-$string['privacy:metadata:assignsubmission:documentid'] = 'The unique identifier of the document submitted to EduLegit.';
+$string['privacy:metadata:assignsubmission:documentid'] = 'The unique identifier of the document created on EduLegit.';
 $string['privacy:metadata:assignsubmission:taskid'] = 'The unique identifier of the task related to the EduLegit submission.';
 $string['privacy:metadata:assignsubmission:taskuserid'] =
         'The unique identifier of the user associated with the EduLegit submission task.';
@@ -97,7 +97,7 @@ $string['privacy:metadata:assignsubmission:aiprobability'] =
 $string['privacy:metadata:edulegit_workspace'] =
         'EduLegit Workspace requires user data to generate and display the EduLegit submission.';
 $string['privacy:metadata:edulegit_workspace:userid'] =
-        'The userid is sent to EduLegit Workspace to allow you to access your data on EduLegit Workspace.';
+        'The userid is transmitted to EduLegit Workspace to grant access to user data within the platform.';
 $string['privacy:metadata:edulegit_workspace:useremail'] =
         'The user email is sent to EduLegit Workspace to identify users and facilitate authentication.';
 $string['privacy:metadata:edulegit_workspace:userfirstname'] =

@@ -216,4 +216,67 @@ class edulegit_submission_manager {
 
         return $this->repository->update_submission($edulegitsubmission) ? $edulegitsubmission : null;
     }
+
+    /**
+     * Deletes an assignment by its ID.
+     *
+     * @param int $assignmentid The ID of the assignment to delete.
+     * @return bool True if the assignment was deleted successfully, false otherwise.
+     */
+    public function delete_assignment($assignmentid): bool {
+        $this->delete_remote_assignment($assignmentid);
+        return $this->repository->delete_assignment($assignmentid);
+    }
+
+    /**
+     * Deletes a submission by its ID.
+     *
+     * @param int $submissionid The ID of the submission to delete.
+     * @return bool True if the submission was deleted successfully, false otherwise.
+     */
+    public function delete_submission($submissionid): bool {
+        $this->delete_remote_submission($submissionid);
+        return $this->repository->delete_submission($submissionid);
+    }
+
+    /**
+     * Deletes all remote user tasks associated with a specific assignment.
+     *
+     * @param int $assignmentid The ID of the assignment whose user tasks should be deleted.
+     * @return bool True if the remote assignment user tasks were deleted successfully, false otherwise.
+     */
+    private function delete_remote_assignment($assignmentid): bool {
+        $usertaskids = $this->repository->get_assignment_task_user_ids($assignmentid);
+        return $this->delete_remote_assigment_user_tasks($usertaskids);
+    }
+
+    /**
+     * Deletes all remote user tasks associated with a specific submission.
+     *
+     * @param int $submissionid The ID of the submission whose user tasks should be deleted.
+     * @return bool True if the remote submission user tasks were deleted successfully, false otherwise.
+     */
+    private function delete_remote_submission($submissionid): bool {
+        $usertaskids = $this->repository->get_submission_task_user_ids($submissionid);
+        return $this->delete_remote_assigment_user_tasks($usertaskids);
+    }
+
+    /**
+     * Deletes remote user tasks based on their IDs.
+     *
+     * @param array|int[] $usertaskids An array of user task IDs to delete.
+     * @return bool True if the tasks were deleted successfully, false otherwise.
+     */
+    private function delete_remote_assigment_user_tasks($usertaskids): bool {
+        if (!$usertaskids) {
+            return false;
+        }
+        try {
+            $response = $this->client->delete_assigment_user_tasks($usertaskids);
+            return $response->get_success();
+        } catch (\Throwable) {
+            return false;
+        }
+    }
+
 }

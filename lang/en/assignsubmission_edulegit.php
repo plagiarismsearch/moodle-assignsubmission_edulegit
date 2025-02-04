@@ -31,8 +31,12 @@ $string['pluginabout'] =
         '<a href="https://edulegit.com/">EduLegit.com</a> is AI management control system, teacher assistant and student supervision';
 $string['default'] = 'Selected by default in new assignments';
 $string['default_help'] = 'If set, this submission method will be selected by default for all new assignments.';
-$string['api_token'] = 'API token';
+$string['api_token'] = 'EduLegit API token';
 $string['api_token_help'] = 'Your API token can be found in the EduLegit admin panel.';
+
+$string['ws_token'] = 'Web service token';
+$string['ws_token_help'] =
+        'This token is used to authenticate external web service requests for the plugin. You can generate it by navigating to <em>Site administration > Server > Web services > Manage tokens > Add</em>.';
 
 $string['enabled'] = 'EduLegit submission';
 $string['enabled_help'] = 'If enabled, students can edit their document submissions on the EduLegit AI management control system.';

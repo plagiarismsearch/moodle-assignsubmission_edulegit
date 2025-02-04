@@ -25,15 +25,21 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$settings->add(new admin_setting_configcheckbox('assignsubmission_edulegit/default',
-        new lang_string('default', 'assignsubmission_edulegit'),
-        new lang_string('default_help', 'assignsubmission_edulegit'), 0));
+$settings->add(new admin_setting_configtext('assignsubmission_edulegit/ws_token',
+        new lang_string('ws_token', 'assignsubmission_edulegit'),
+        new lang_string('ws_token_help', 'assignsubmission_edulegit'),
+        '',
+        PARAM_RAW, 30));
 
 $settings->add(new admin_setting_configtext('assignsubmission_edulegit/api_token',
         new lang_string('api_token', 'assignsubmission_edulegit'),
         new lang_string('api_token_help', 'assignsubmission_edulegit'),
         '',
         PARAM_RAW, 30));
+
+$settings->add(new admin_setting_configcheckbox('assignsubmission_edulegit/default',
+        new lang_string('default', 'assignsubmission_edulegit'),
+        new lang_string('default_help', 'assignsubmission_edulegit'), 0));
 
 $settings->add(new admin_setting_configcheckbox('assignsubmission_edulegit/enable_attention',
         new lang_string('enable_attention', 'assignsubmission_edulegit'),

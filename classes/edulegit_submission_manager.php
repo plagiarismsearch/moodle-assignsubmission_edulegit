@@ -79,8 +79,6 @@ class edulegit_submission_manager {
 
         $assignment = $this->repository->get_assignment_info($submission->assignment);
 
-        $callbackurl = new \moodle_url('/mod/assign/submission/edulegit/callback.php');
-
         $autoplagiarismcheck = (bool) $this->config->get_plugin_or_global_config('enable_plagiarism');
         $autoaicheck = (bool) $this->config->get_plugin_or_global_config('enable_ai');
         $mustrecordevents = (bool) $this->config->get_plugin_or_global_config('enable_plagiarism');
@@ -90,7 +88,7 @@ class edulegit_submission_manager {
 
         $data = [
                 'meta' => [
-                        'callbackUrl' => $callbackurl,
+                        'callbackUrl' => (string) $this->build_callback_url(),
                         'moodle' => $this->config->get_release(),
                         'plugin' => $this->config->get_plugin_release(),
                 ],
@@ -144,6 +142,19 @@ class edulegit_submission_manager {
         }
 
         return $this->sync_submission_edulegit_response($submission, $responseobject);
+    }
+
+    private function build_callback_url(): \moodle_url {
+        return new \moodle_url('/webservice/rest/server.php', [
+                'wstoken' => $this->parse_plugin_wstoken(),
+                'wsfunction' => 'assignsubmission_edulegit_webhook_handler',
+                'moodlewsrestformat' => 'json',
+        ]);
+    }
+
+    private function parse_plugin_wstoken(): string {
+        return $this->config->get_plugin_or_global_config('ws_token') ??
+                ($this->config->get_plugin_or_global_config('wstoken') ?? '');
     }
 
     /**

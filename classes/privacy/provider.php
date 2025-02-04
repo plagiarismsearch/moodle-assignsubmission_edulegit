@@ -163,25 +163,41 @@ class provider implements
 
         \core_plagiarism\privacy\provider::delete_plagiarism_for_context($requestdata->get_context());
 
-        // Delete the records in the table.
-        $DB->delete_records('assignsubmission_edulegit', ['assignment' => $requestdata->get_assignid()]);
+        try {
+            $plugin = $requestdata->get_assign()->get_plugin_by_type('assignsubmission', 'edulegit');
+            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager */
+            $submissionmanager = $plugin->get_edulegit()->get_manager();
+            $submissionmanager->delete_assignment($requestdata->get_assignid());
+
+        } catch (\Throwable $e) {
+            // Delete the records in the table.
+            $DB->delete_records('assignsubmission_edulegit', ['assignment' => $requestdata->get_assignid()]);
+        }
+
     }
 
     /**
      * A call to this method should delete user data (where practicle) from the userid and context.
      *
-     * @param assign_plugin_request_data $deletedata Details about the user and context to focus the deletion.
+     * @param assign_plugin_request_data $exportdata Details about the user and context to focus the deletion.
      */
-    public static function delete_submission_for_userid(assign_plugin_request_data $deletedata) {
+    public static function delete_submission_for_userid(assign_plugin_request_data $exportdata) {
         global $DB;
 
-        \core_plagiarism\privacy\provider::delete_plagiarism_for_user($deletedata->get_user()->id, $deletedata->get_context());
+        \core_plagiarism\privacy\provider::delete_plagiarism_for_user($exportdata->get_user()->id, $exportdata->get_context());
 
-        $submissionid = $deletedata->get_pluginobject()->id;
-
-        // Delete the records in the table.
-        $DB->delete_records('assignsubmission_edulegit', ['assignment' => $deletedata->get_assignid(),
-                'submission' => $submissionid]);
+        $submissionid = $exportdata->get_pluginobject()->id;
+        $assignmentid = $exportdata->get_assignid();
+        try {
+            $plugin = $exportdata->get_assign()->get_plugin_by_type('assignsubmission', 'edulegit');
+            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager */
+            $submissionmanager = $plugin->get_edulegit()->get_manager();
+            $submissionmanager->delete_assignment($assignmentid, $submissionid);
+        } catch (\Throwable $e) {
+            // Delete the records in the table.
+            $DB->delete_records('assignsubmission_edulegit', ['assignment' => $assignmentid,
+                    'submission' => $submissionid]);
+        }
     }
 
     /**
@@ -198,12 +214,37 @@ class provider implements
         global $DB;
 
         \core_plagiarism\privacy\provider::delete_plagiarism_for_users($deletedata->get_userids(), $deletedata->get_context());
-        if (empty($deletedata->get_submissionids())) {
+
+        $submissionids = $deletedata->get_submissionids();
+
+        if (empty($submissionids)) {
             return;
         }
 
-        $params['assignid'] = $deletedata->get_assignid();
-        $params['submissionid'] = $deletedata->get_submissionids();
-        $DB->delete_records_select('assignsubmission_edulegit', "assignment = :assignid AND submission :submissionid", $params);
+        $assignmentid = $deletedata->get_assignid();
+
+        try {
+            $plugin = $deletedata->get_assign()->get_plugin_by_type('assignsubmission', 'edulegit');
+            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager */
+            $submissionmanager = $plugin->get_edulegit()->get_manager();
+        } catch (\Throwable $e) {
+            $submissionmanager = null;
+        }
+
+        foreach ($submissionids as $submissionid) {
+            try {
+                if ($submissionmanager) {
+                    $submissionmanager->delete_assignment($assignmentid, $submissionid);
+                } else {
+                    $DB->delete_records('assignsubmission_edulegit', ['assignment' => $assignmentid,
+                            'submission' => $submissionid]);
+                }
+            } catch (\Throwable $e) {
+                // Delete the records in the table.
+                $DB->delete_records('assignsubmission_edulegit', ['assignment' => $assignmentid,
+                        'submission' => $submissionid]);
+            }
+        }
+
     }
 }

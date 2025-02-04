@@ -57,14 +57,12 @@ class edulegit_callback {
     /**
      * Handles incoming payload and processes the event.
      *
-     * @param object $payload The payload object containing the event and data.
+     * @param string $event Event name of action.
+     * @param object $data The payload object containing the event and data.
      * @return mixed Returns the result of the event handling or null if the event is not recognized.
      */
-    public function handle(object $payload) {
-        $event = $payload->event ?? null;
-        $data = $payload->data ?? [];
-
-        if ($event == 'taskUser.sync') {
+    public function handle(string $event, object $data) {
+        if ($event === 'taskUser.sync') {
             return $this->sync_task_user($data);
         }
         return null;

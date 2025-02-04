@@ -49,7 +49,7 @@ try {
     }
 
     $callback = new \assignsubmission_edulegit\edulegit_callback();
-    $result = $callback->handle($payload);
+    $result = $callback->handle($payload->event ?? '', $payload->data ?? []);
 
     echo \assignsubmission_edulegit\edulegit_helper::json_encode($result);
 } catch (\Throwable $exception) {

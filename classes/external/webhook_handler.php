@@ -1,4 +1,27 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Services configuration
+ *
+ * @package   assignsubmission_edulegit
+ * @author    Alex Crosby <developer@edulegit.com>
+ * @copyright @2024 EduLegit.com
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 namespace assignsubmission_edulegit\external;
 
@@ -6,8 +29,6 @@ use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_value;
 use core_external\external_single_structure;
-
-defined('MOODLE_INTERNAL') || die();
 
 class webhook_handler extends external_api {
     /**
@@ -34,14 +55,14 @@ class webhook_handler extends external_api {
 
         $params = self::validate_parameters(self::execute_parameters(), ['event' => $event, 'data' => $data]);
 
-        $decodedData = \assignsubmission_edulegit\edulegit_helper::json_decode($params['data']);
+        $dataobject = \assignsubmission_edulegit\edulegit_helper::json_decode($params['data']);
 
-        if ($decodedData === null) {
+        if ($dataobject === null) {
             throw new \invalid_parameter_exception('Invalid data payload.');
         }
 
         $callback = new \assignsubmission_edulegit\edulegit_callback();
-        $result = $callback->handle($params['event'] ?? '', $decodedData);
+        $result = $callback->handle($params['event'] ?? '', $dataobject);
 
         return [
                 'success' => true,

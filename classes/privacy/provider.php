@@ -165,7 +165,9 @@ class provider implements
 
         try {
             $plugin = $requestdata->get_assign()->get_plugin_by_type('assignsubmission', 'edulegit');
-            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager */
+            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager
+             * Define the variable type for better IDE autocomplete and code readability.
+             */
             $submissionmanager = $plugin->get_edulegit()->get_manager();
             $submissionmanager->delete_assignment($requestdata->get_assignid());
 
@@ -190,7 +192,9 @@ class provider implements
         $assignmentid = $exportdata->get_assignid();
         try {
             $plugin = $exportdata->get_assign()->get_plugin_by_type('assignsubmission', 'edulegit');
-            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager */
+            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager
+             * Define the variable type for better IDE autocomplete and code readability.
+             */
             $submissionmanager = $plugin->get_edulegit()->get_manager();
             $submissionmanager->delete_assignment($assignmentid, $submissionid);
         } catch (\Throwable $e) {
@@ -225,7 +229,9 @@ class provider implements
 
         try {
             $plugin = $deletedata->get_assign()->get_plugin_by_type('assignsubmission', 'edulegit');
-            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager */
+            /* @var $submissionmanager \assignsubmission_edulegit\edulegit_submission_manager
+             * Define the variable type for better IDE autocomplete and code readability.
+             */
             $submissionmanager = $plugin->get_edulegit()->get_manager();
         } catch (\Throwable $e) {
             $submissionmanager = null;

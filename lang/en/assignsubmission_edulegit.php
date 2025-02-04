@@ -36,7 +36,7 @@ $string['api_token_help'] = 'Your API token can be found in the EduLegit admin p
 
 $string['ws_token'] = 'Web service token';
 $string['ws_token_help'] =
-        'This token is used to authenticate external web service requests for the plugin. You can generate it by navigating to <em>Site administration > Server > Web services > Manage tokens > Add</em>.';
+        'This token is used to authenticate external webhook requests for the plugin. <br>You can generate it by navigating to <em>Site administration > Server > Web services > Manage tokens > Add</em>.';
 
 $string['enabled'] = 'EduLegit submission';
 $string['enabled_help'] = 'If enabled, students can edit their document submissions on the EduLegit AI management control system.';

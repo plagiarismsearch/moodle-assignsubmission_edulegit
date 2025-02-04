@@ -11,7 +11,9 @@ EduLegit workspace is a Moodle assignment submission plugin
 Author: Alex Crosby <developer@plagiarismsearch.com>  
 Copyright: Edulegit.com, https://edulegit.com
 
-EduLegit is an innovative AI management control system that aims to assist teachers in supervising students and ensuring seamless workflow and increased student involvement in the learning process. The supervision is handled with the most advanced tools, including but not limited to:
+EduLegit is an innovative AI management control system that aims to assist teachers in supervising students and ensuring seamless workflow and increased student involvement in the
+learning process. The supervision is handled with the most advanced tools, including but not limited to:
+
 * AI motion monitoring
 * Al control alerts
 * AI text check
@@ -20,7 +22,7 @@ EduLegit is an innovative AI management control system that aims to assist teach
 * Work location control
 * Session and time control
 
-# Quick install
+### Quick install
 
 1. Get the latest release (zip file) on [GitHub](https://github.com/plagiarismsearch/assignsubmission_edulegit/releases) or
    the [Moodle plugins directory](https://moodle.org/plugins/assignsubmission_edulegit).
@@ -28,3 +30,12 @@ EduLegit is an innovative AI management control system that aims to assist teach
 3. Unpack the files into the `/mod/assign/submission/edulegit` Moodle directory.
 4. Configure the EduLegit workspace plugin under Admin **Site administration > Plugins > Submission plugins > EduLegit workspace**.
 5. Visit [EduLegit API Token page](https://app.edulegit.com/account/api) to get your API token.
+
+### Enabling Moodle External Services for Webhooks (Additional Steps)
+
+1. Navigate to **Site administration > Advanced features** and enable the **Web services** feature.
+2. Go to **Site administration > Server > Web services > Manage tokens** and click the **Add** button to generate a new token.
+3. Copy the generated token and save it into the `Web service token` field in the plugin settings on the page:  
+   **Site administration > Plugins > Submission plugins > EduLegit workspace**.
+
+

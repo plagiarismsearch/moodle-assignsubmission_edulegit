@@ -24,12 +24,12 @@ learning process. The supervision is handled with the most advanced tools, inclu
 
 ### Quick install
 
-1. Get the latest release (zip file) on [GitHub](https://github.com/plagiarismsearch/assignsubmission_edulegit/releases) or
+1. Get the latest release (zip file) on [GitHub](https://github.com/plagiarismsearch/moodle-assignsubmission_edulegit/releases) or
    the [Moodle plugins directory](https://moodle.org/plugins/assignsubmission_edulegit).
 2. Follow the instructions described [here](https://docs.moodle.org/37/en/Installing_plugins) to install the plugin.
 3. Unpack the files into the `/mod/assign/submission/edulegit` Moodle directory.
 4. Configure the EduLegit workspace plugin under Admin **Site administration > Plugins > Submission plugins > EduLegit workspace**.
-5. Visit [EduLegit API Token page](https://app.edulegit.com/account/api) to get your API token.
+5. Login as Organization administrator and navigate to [EduLegit API Token page](https://app.edulegit.com/account/api) to get your API token.
 
 ### Enabling Moodle External Services for Webhooks (Additional Steps)
 

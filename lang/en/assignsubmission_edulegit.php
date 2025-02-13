@@ -65,9 +65,9 @@ $string['pluginabout'] = '<a href="https://edulegit.com/">EduLegit.com</a> is AI
 $string['pluginname'] = 'EduLegit workspace';
 
 $string['privacy:metadata:assignsubmission'] = 'Stores submission-related data for assignments in EduLegit Workspace.';
-$string['privacy:metadata:assignsubmission:assignment'] = 'The unique identifier of the assignment associated with the submission.';
-$string['privacy:metadata:assignsubmission:airate'] = 'The AI-generated rating assigned to the submission.';
 $string['privacy:metadata:assignsubmission:aiprobability'] = 'The probability score indicating whether the submission was AI-generated.';
+$string['privacy:metadata:assignsubmission:airate'] = 'The AI-generated rating assigned to the submission.';
+$string['privacy:metadata:assignsubmission:assignment'] = 'The unique identifier of the assignment associated with the submission.';
 $string['privacy:metadata:assignsubmission:authkey'] = 'An authentication key for secure access to the EduLegit submission.';
 $string['privacy:metadata:assignsubmission:baseurl'] = 'The base URL for accessing the EduLegit submission.';
 $string['privacy:metadata:assignsubmission:content'] = 'The content of the EduLegit submission.';
@@ -84,8 +84,8 @@ $string['privacy:metadata:assignsubmission:userkey'] = 'A unique key identifying
 
 $string['privacy:metadata:edulegit_workspace'] = 'EduLegit Workspace requires user data to generate and display the EduLegit submission.';
 $string['privacy:metadata:edulegit_workspace:useremail'] = 'The user email is sent to EduLegit Workspace to identify users and facilitate authentication.';
-$string['privacy:metadata:edulegit_workspace:userid'] = 'The userid is transmitted to EduLegit Workspace to grant access to user data within the platform.';
 $string['privacy:metadata:edulegit_workspace:userfirstname'] = 'The user\'s first name is sent to the EduLegit Workspace to ensure full identification for the user\'s teacher.';
+$string['privacy:metadata:edulegit_workspace:userid'] = 'The userid is transmitted to EduLegit Workspace to grant access to user data within the platform.';
 $string['privacy:metadata:edulegit_workspace:userlastname'] = 'The user\'s last name is sent to the EduLegit Workspace to ensure full identification for the user\'s teacher.';
 
 $string['submission'] = 'Submission';

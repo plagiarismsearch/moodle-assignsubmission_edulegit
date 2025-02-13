@@ -56,15 +56,20 @@ class webhook_handler extends external_api {
      *
      * @param string $event Event name.
      * @param string $data The JSON payload.
+     * @param int $cmid Course module ID for context validation.
      * @return array The result of the webhook processing.
      * @throws \invalid_parameter_exception
+     * @throws \required_capability_exception
      */
-    public static function execute(string $event, string $data): array {
+    public static function execute(string $event, string $data, int $cmid): array {
 
-        $params = self::validate_parameters(self::execute_parameters(), ['event' => $event, 'data' => $data]);
+        $params = self::validate_parameters(self::execute_parameters(), ['event' => $event, 'data' => $data, 'cmid' => $cmid]);
+
+        $context = \context_module::instance($params['cmid']);
+        self::validate_context($context);
+        require_capability('mod/assign:submit', $context);
 
         $dataobject = \assignsubmission_edulegit\edulegit_helper::json_decode($params['data']);
-
         if ($dataobject === null) {
             throw new \invalid_parameter_exception('Invalid data payload.');
         }

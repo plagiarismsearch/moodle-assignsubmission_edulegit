@@ -32,8 +32,8 @@ $string['as_pdf'] = 'Download PDF';
 $string['as_txt'] = 'Download plain text';
 
 $string['default'] = 'Selected by default in new assignments';
-$string['default_help'] = 'If set, this submission method will be selected by default for all new assignments.';
 $string['default_filename'] = 'edulegit.html';
+$string['default_help'] = 'If set, this submission method will be selected by default for all new assignments.';
 $string['default_open_edulegit_error'] = 'An error occurred while fetching data from EduLegit. Please try again later.';
 
 $string['edulegit'] = 'EduLegit workspace';
@@ -66,6 +66,8 @@ $string['pluginname'] = 'EduLegit workspace';
 
 $string['privacy:metadata:assignsubmission'] = 'Stores submission-related data for assignments in EduLegit Workspace.';
 $string['privacy:metadata:assignsubmission:assignment'] = 'The unique identifier of the assignment associated with the submission.';
+$string['privacy:metadata:assignsubmission:airate'] = 'The AI-generated rating assigned to the submission.';
+$string['privacy:metadata:assignsubmission:aiprobability'] = 'The probability score indicating whether the submission was AI-generated.';
 $string['privacy:metadata:assignsubmission:authkey'] = 'An authentication key for secure access to the EduLegit submission.';
 $string['privacy:metadata:assignsubmission:baseurl'] = 'The base URL for accessing the EduLegit submission.';
 $string['privacy:metadata:assignsubmission:content'] = 'The content of the EduLegit submission.';
@@ -79,12 +81,10 @@ $string['privacy:metadata:assignsubmission:title'] = 'The title of the EduLegit 
 $string['privacy:metadata:assignsubmission:url'] = 'The shareable URL of the EduLegit submission document.';
 $string['privacy:metadata:assignsubmission:userid'] = 'The unique identifier of the user who submitted to EduLegit.';
 $string['privacy:metadata:assignsubmission:userkey'] = 'A unique key identifying the user in EduLegit.';
-$string['privacy:metadata:assignsubmission:airate'] = 'The AI-generated rating assigned to the submission.';
-$string['privacy:metadata:assignsubmission:aiprobability'] = 'The probability score indicating whether the submission was AI-generated.';
 
 $string['privacy:metadata:edulegit_workspace'] = 'EduLegit Workspace requires user data to generate and display the EduLegit submission.';
-$string['privacy:metadata:edulegit_workspace:userid'] = 'The userid is transmitted to EduLegit Workspace to grant access to user data within the platform.';
 $string['privacy:metadata:edulegit_workspace:useremail'] = 'The user email is sent to EduLegit Workspace to identify users and facilitate authentication.';
+$string['privacy:metadata:edulegit_workspace:userid'] = 'The userid is transmitted to EduLegit Workspace to grant access to user data within the platform.';
 $string['privacy:metadata:edulegit_workspace:userfirstname'] = 'The user\'s first name is sent to the EduLegit Workspace to ensure full identification for the user\'s teacher.';
 $string['privacy:metadata:edulegit_workspace:userlastname'] = 'The user\'s last name is sent to the EduLegit Workspace to ensure full identification for the user\'s teacher.';
 

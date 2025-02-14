@@ -48,6 +48,7 @@ class webhook_handler extends external_api {
         return new external_function_parameters([
                 'event' => new external_value(PARAM_STRINGID, 'Event name sent by EduLegit'),
                 'data' => new external_value(PARAM_RAW, 'JSON data payload sent by EduLegit'),
+                'cmid' => new external_value(PARAM_INT, 'Course module ID'),
         ]);
     }
 

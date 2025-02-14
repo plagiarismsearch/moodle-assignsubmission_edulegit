@@ -27,9 +27,9 @@ defined('MOODLE_INTERNAL') || die ();
 if (!isset($plugin)) {
     $plugin = new \stdClass();
 }
-$plugin->version = 2025021201;
+$plugin->version = 2025021401;
 $plugin->requires = 2023011800;
 $plugin->supported = [420, 450]; // Moodle 4.2 and 4.5 supported.
 $plugin->component = 'assignsubmission_edulegit';
-$plugin->release = 'beta.5';
+$plugin->release = 'beta.6';
 $plugin->maturity = MATURITY_STABLE;
